@@ -1,90 +1,165 @@
 # SCCodex
 
-Classic StarCraft Protoss acknowledgements on **every prompt submitted to Codex**.
-One sound plays per prompt. A unit gets three consecutive prompts, then the next
-unit takes over. After 42 prompts, the cycle returns to Zealot.
+**Give every Codex prompt a Protoss acknowledgement.**
 
-This uses Codex's official `UserPromptSubmit` lifecycle hook and your installed
-Codex CLI or desktop app. Your Codex account, model settings, and other hooks stay
-in place. Python 3.9+ and macOS are required. No Python packages or API key are
-needed. `ffmpeg` is needed only to prepare the audio files.
+Submit a prompt. A Zealot answers. Three prompts later, a Dragoon takes over.
+SCCodex brings the classic StarCraft command sounds to the Codex you already use.
 
-## Start
+**macOS · Codex CLI + desktop · 14 units · 42-prompt loop**
 
-From this folder:
+[![Illustrated demo: three prompts trigger Zealot acknowledgements, then the fourth switches to Dragoon](docs/media/demo.gif)](docs/media/demo.mp4)
+
+*The GIF is silent and illustrates the prompt flow; SCCodex itself plays audio
+without adding a visual panel to Codex.*
+**[Watch with sound — MP4](docs/media/demo.mp4)** · **[Try the soundboard](#hear-it-in-your-browser)**
+
+## Your coding session, with a little more Aiur
+
+- **One prompt, one acknowledgement.** Each unit gets three consecutive prompts,
+  then the next unit takes over. After Arbiter, it's back to Zealot.
+- **Keep your usual Codex.** Works through the official `UserPromptSubmit` hook.
+  Use your existing account, models, CLI, or desktop app.
+- **Ready when you are.** Rotation, mute, and volume persist between sessions.
+  Sound plays in the background while Codex works.
+- **Local playback.** Fetch the audio once; playback then works offline. The
+  sound hook never records or forwards your prompt text.
+
+## Get your first acknowledgement
+
+You need **macOS**, an installed **Codex CLI with lifecycle hooks**, **Python
+3.9+**, and **ffmpeg**. No Python packages or extra API key are needed.
+With Homebrew, install missing prerequisites using `brew install python ffmpeg`.
 
 ```sh
-./sccodex fetch            # Fetch and verify source audio; convert to PCM WAV
+git clone https://github.com/amicus-investments/sccodex.git
+cd sccodex
+
+./sccodex fetch            # Download, verify, and prepare the sound pack
 ./sccodex preview zealot   # Hear the three Zealot acknowledgements
-./sccodex setup            # Install for your Codex CLI and desktop app
-./sccodex                 # Launch your existing Codex CLI
+./sccodex setup            # Install the prompt hook
+codex
 ```
 
-Codex requires new hooks to be trusted once. Open **`/hooks`** in Codex, review
-the command ending in `sccodex/src/sccodex.py hook`, and trust it. Start a new
-session if an already open desktop thread hasn't picked up the hook.
-See the [official hook documentation](https://learn.chatgpt.com/docs/hooks).
+In the Codex CLI, open **`/hooks`**, review the command ending in
+`sccodex/src/sccodex.py hook`, and **trust it once**. Then submit a prompt.
+For the desktop app, start a new chat after setup and trust. See
+[Codex's hook documentation](https://learn.chatgpt.com/docs/hooks).
 
-Normal Codex arguments pass through, including `./sccodex resume`,
-`./sccodex exec "your prompt"`, `./sccodex --model ...`, and `./sccodex --version`.
-After setup, running ordinary `codex` also plays the acknowledgements.
-
-## Controls
+After setup, ordinary `codex` launches use the sound hook. You can also use
+`./sccodex` as a launcher; normal arguments pass through:
 
 ```sh
-./sccodex status                # Show next unit, slot, volume, and playback errors
-./sccodex list                  # Show unit order
-./sccodex preview dark-templar  # Preview without moving the prompt rotation
-./sccodex play                  # Play one sound and advance the rotation
-./sccodex volume 50             # Volume from 0–100; default 65
-./sccodex mute                  # Pause sounds and rotation
-./sccodex unmute                # Resume
-./sccodex reset                 # Return to Zealot 1/3
-./sccodex uninstall             # Remove this hook; preserve all other hooks
+./sccodex resume
+./sccodex exec "Explain this repository"
 ```
 
-Preview is an explicit sound check and plays even when the prompt hook is muted.
-Volume 0 silences both previews and prompts; prompts at volume 0 pause the rotation.
+## Hear it in your browser
 
-The order is Zealot → Dragoon → High Templar → Dark Templar → Archon →
-Dark Archon → Probe → Shuttle → Reaver → Observer → Scout → Corsair → Carrier →
-Arbiter. Each gets three plays. The Observer set has two order acknowledgement
-clips, so its third slot repeats its first. There are 41 audio files and 42 slots.
-
-## How it works
-
-- `assets/protoss.json` defines the unit order and three sound slots per unit.
-- Audio downloads come from a pinned commit of
-  [hometlt's StarCraft assets mirror](https://github.com/hometlt/starcraft-all-races-assets/tree/362949791055e0fc010ab7fe873792b362cba2d9/BroodWar.SC2Mod/Assets/Sounds).
-  Each original file is verified against its Git blob checksum before conversion.
-  StarCraft audio belongs to Blizzard Entertainment. Downloaded audio is excluded
-  from Git; this repository contains the code and asset manifest.
-- Setup copies the runtime and WAVs to `~/.codex/sccodex/` and adds one handler to
-  `~/.codex/hooks.json`. Existing hooks are preserved, with a backup before edits.
-  It never changes `config.toml` or the existing notification command.
-- Playback runs in a detached worker using macOS `afplay`. Submitting a prompt
-  doesn't wait for the sound to finish. A file lock serializes sounds from
-  concurrent sessions and keeps the shared counter consistent.
-- The position, volume, and mute setting persist in
-  `~/Library/Application Support/SCCodex/state.json`. Duplicate session/turn IDs
-  play only once. Muted prompts and failed playback do not advance the counter.
-  The hook never stores or forwards your prompt text. Playback errors never
-  reject a prompt.
-
-`CODEX_HOME` selects a custom Codex configuration folder, if already configured.
-`SCCODEX_STATE_DIR` selects a separate state folder, useful for testing. The
-installed hook contains absolute, shell-quoted paths so spaces in folder names
-and running Codex from another working directory both work.
-
-## Verify
-
-Fetch the audio, then run:
+The repository includes a short video with real audio and a soundboard for all
+14 units. To try the video before installing the hook, clone the repo and run:
 
 ```sh
-python3 -m unittest discover -s tests -v
-./sccodex preview zealot
+python3 scripts/preview.py
 ```
 
-The tests cover three plays per unit, a full cycle, saved progress, duplicate
-events, concurrent playback, muting, failed audio, corrupt-state recovery, quiet
-hook execution, argument forwarding, and safe installation/removal.
+Open **[localhost:8765/docs/](http://localhost:8765/docs/)**. Use the video controls
+or click an acknowledgement to replay it. The soundboard uses downloaded WAVs
+when available; otherwise it streams the original clips from the pinned source
+mirror when you press play. It does not change your prompt rotation.
+Stop the server with **Ctrl+C**.
+
+GitHub READMEs display the GIF, but strip embedded HTML audio players. The
+browser preview provides the playable clips. The
+[MP4](docs/media/demo.mp4) can also be downloaded and played on its own.
+
+## Meet the rotation
+
+```text
+Prompt 1   → Zealot 1/3
+Prompt 2   → Zealot 2/3
+Prompt 3   → Zealot 3/3
+Prompt 4   → Dragoon 1/3
+    …
+Prompt 42  → Arbiter 3/3
+Prompt 43  → Zealot 1/3
+```
+
+<details>
+<summary>All 14 units, in order</summary>
+
+| Prompts | Unit | Preview in your terminal |
+| --- | --- | --- |
+| 1–3 | Zealot | `./sccodex preview zealot` |
+| 4–6 | Dragoon | `./sccodex preview dragoon` |
+| 7–9 | High Templar | `./sccodex preview high-templar` |
+| 10–12 | Dark Templar | `./sccodex preview dark-templar` |
+| 13–15 | Archon | `./sccodex preview archon` |
+| 16–18 | Dark Archon | `./sccodex preview dark-archon` |
+| 19–21 | Probe | `./sccodex preview probe` |
+| 22–24 | Shuttle | `./sccodex preview shuttle` |
+| 25–27 | Reaver | `./sccodex preview reaver` |
+| 28–30 | Observer | `./sccodex preview observer` |
+| 31–33 | Scout | `./sccodex preview scout` |
+| 34–36 | Corsair | `./sccodex preview corsair` |
+| 37–39 | Carrier | `./sccodex preview carrier` |
+| 40–42 | Arbiter | `./sccodex preview arbiter` |
+
+The Observer has two acknowledgement clips; its third slot repeats its first.
+That's 41 unique recordings across 42 slots.
+
+</details>
+
+## Make it yours
+
+| Command | What it does |
+| --- | --- |
+| `./sccodex volume 50` | Set volume from 0–100; default is 65 |
+| `./sccodex mute` | Pause sounds and the rotation |
+| `./sccodex unmute` | Resume where you left off |
+| `./sccodex reset` | Go back to Zealot 1/3 |
+| `./sccodex status` | Show the next clip, settings, and any audio error |
+| `./sccodex preview dark-templar` | Hear a unit's three clips without advancing |
+| `./sccodex play` | Play the next clip and advance manually |
+| `./sccodex list` | Show the full unit order |
+| `./sccodex uninstall` | Remove the SCCodex hook |
+
+`preview` is an explicit sound check and plays even if the prompt hook is muted.
+Volume 0 silences previews too and pauses the prompt rotation. Uninstall
+preserves your other hooks, downloaded sounds, and SCCodex settings.
+
+<details>
+<summary>Not hearing anything?</summary>
+
+1. Run `./sccodex preview zealot`. If it reports missing audio, run
+   `./sccodex fetch` and `./sccodex setup` again.
+2. Run `./sccodex status`. Use `./sccodex unmute` and `./sccodex volume 65` if needed.
+3. In Codex, check `/hooks` and trust the SCCodex command. Start a new session
+   after changing hooks.
+4. Check your Mac's output device and system volume. Playback errors appear in
+   `./sccodex status` and do not reject a Codex prompt.
+
+Want acknowledgements when Codex finishes instead? Run
+`./sccodex setup --event finish`, review the hook, and start a new session.
+
+</details>
+
+## Build with us
+
+Terran and Zerg packs, Linux/Windows playback, and native plugin packaging are
+good next contributions. The current version is a local hook installer;
+marketplace installation is not available yet.
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) for development and validation, or
+[how it works](docs/DEVELOPMENT.md) for the hook, state, and audio details.
+
+## License and credits
+
+SCCodex's code and original documentation are **[MIT licensed](LICENSE)**.
+StarCraft audio and trademarks belong to **Blizzard Entertainment** and are
+excluded from that license. The full sound pack is fetched separately and is
+not committed to the repository. The short demo video contains Blizzard audio;
+see [NOTICE.md](NOTICE.md) for attribution and applicable policies.
+
+Audio source: [hometlt's StarCraft assets mirror](https://github.com/hometlt/starcraft-all-races-assets),
+pinned and checksum-verified. SCCodex is an independent fan project, unaffiliated
+with Blizzard Entertainment or OpenAI.

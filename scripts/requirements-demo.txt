@@ -1,0 +1,2 @@
+# Optional media-building dependency; not needed to install or run SCCodex.
+Pillow==12.3.0

@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SCCodex — hear your prompts answered</title>
+  <meta name="description" content="Classic StarCraft Protoss acknowledgements for every Codex prompt. Hear the demo and audition all 14 units.">
+  <style>
+    :root { color-scheme: dark; --bg: #0b101d; --panel: #121b2d; --line: #2a374c; --text: #f3f6fc; --muted: #a4b1c6; --gold: #f1cf83; --cyan: #86e1e7; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; }
+    main, .nav, footer { max-width: 1200px; margin: auto; padding: 0 36px; }
+    a { color: var(--cyan); text-underline-offset: 4px; }
+    .nav { height: 94px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 13px; font-size: 19px; font-weight: 750; letter-spacing: 1.6px; }
+    .brand svg { width: 31px; height: 39px; color: var(--gold); }
+    .nav a { font-size: 14px; }
+    .eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 12px; font-weight: 700; margin: 0 0 17px; }
+    .hero { display: grid; grid-template-columns: .87fr 1.4fr; gap: 44px; align-items: center; padding: 29px 0 42px; }
+    h1 { font-size: clamp(35px, 4vw, 54px); line-height: 1.08; letter-spacing: -2px; margin: 0 0 23px; }
+    h1 span { color: var(--gold); }
+    .intro { color: var(--muted); font-size: 17px; max-width: 360px; margin-bottom: 26px; }
+    .facts { display: flex; flex-wrap: wrap; gap: 8px; }
+    .fact { border: 1px solid var(--line); border-radius: 6px; padding: 5px 10px; font-size: 12px; color: var(--muted); }
+    .player { border: 1px solid var(--line); background: var(--panel); border-radius: 16px; overflow: hidden; }
+    video { width: 100%; aspect-ratio: 16 / 9; display: block; background: var(--bg); }
+    .player-note { padding: 12px 17px; color: var(--muted); font-size: 12px; margin: 0; }
+    h2 { font-size: 27px; letter-spacing: -.7px; margin: 0 0 9px; line-height: 1.25; }
+    h3 { margin: 0; font-size: 19px; }
+    .sub { color: var(--muted); margin: 0 0 23px; font-size: 15px; }
+    .replays { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    button { color: var(--text); font: inherit; cursor: pointer; }
+    .replay { text-align: left; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; transition: border-color .15s; }
+    .replay:hover, .replay[aria-pressed="true"] { border-color: var(--gold); }
+    .replay strong { display: block; font-size: 15px; }
+    .replay span { display: block; color: var(--gold); font-size: 13px; margin-top: 7px; }
+    .replay small { color: var(--muted); font-size: 11px; }
+    .play-icon { float: right; color: var(--gold); }
+    .volume { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--muted); margin: 16px 0 0; }
+    input[type="range"] { accent-color: var(--gold); width: 150px; }
+    .status { min-height: 24px; color: var(--cyan); font-size: 13px; margin: 8px 0 0; }
+    .install { margin: 35px 0 46px; display: grid; grid-template-columns: .85fr 1.4fr; gap: 40px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 30px 0; align-items: start; }
+    .install p { color: var(--muted); font-size: 14px; margin: 12px 0 0; }
+    pre { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 17px 20px; overflow-x: auto; margin: 0; font-size: 13px; line-height: 1.9; }
+    code { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; }
+    .comment { color: var(--muted); }
+    .board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .unit { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+    .unit-meta { display: block; color: var(--muted); font-size: 12px; margin: 2px 0 14px; }
+    .slots { display: flex; gap: 8px; margin-bottom: 15px; }
+    .slot { flex: 1; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; font-size: 12px; padding: 7px 10px; white-space: nowrap; }
+    .slot:hover, .slot[aria-pressed="true"] { color: var(--gold); border-color: var(--gold); }
+    audio { width: 100%; height: 38px; }
+    .unit-note { font-size: 11px; color: var(--muted); margin: 10px 0 0; }
+    footer { padding-top: 39px; padding-bottom: 40px; color: var(--muted); font-size: 12px; }
+    footer p { margin: 7px 0; }
+    :focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; gap: 25px; } .intro { max-width: 620px; } .board { grid-template-columns: repeat(2, 1fr); } .install { grid-template-columns: 1fr; gap: 20px; } }
+    @media (max-width: 540px) { main, .nav, footer { padding-left: 20px; padding-right: 20px; } .nav { height: 76px; } .hero { padding-top: 18px; } .replays, .board { grid-template-columns: 1fr; } h1 { font-size: 39px; } .nav a { font-size: 12px; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .replay { transition: none; } }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">
+      <svg viewBox="0 0 32 40" fill="none" aria-hidden="true"><path d="M16 1 30 20 16 39 2 20Z" stroke="currentColor" stroke-width="2"/><path d="m16 9 7 11-7 11-7-11Z" fill="currentColor"/></svg>
+      SCCODEX
+    </div>
+    <a href="https://github.com/amicus-investments/sccodex">View on GitHub ↗</a>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <div>
+        <p class="eyebrow">Classic StarCraft. Your Codex.</p>
+        <h1 id="title">Every prompt.<br> <span>A Protoss reply.</span></h1>
+        <p class="intro">Issue a command. Hear a Zealot answer. Three prompts later, a Dragoon takes over. Your coding session just joined the fleet.</p>
+        <div class="facts"><span class="fact">14 units</span><span class="fact">3 plays each</span><span class="fact">macOS</span><span class="fact">CLI + desktop</span></div>
+      </div>
+      <div class="player">
+        <video id="demo" controls playsinline preload="auto" poster="media/demo-poster.png" aria-label="Four prompt illustration with Zealot and Dragoon acknowledgements">
+          <source src="media/demo.mp4" type="video/mp4">
+          <track kind="captions" src="media/demo.vtt" srclang="en" label="English" default>
+          Your browser cannot play this video. <a href="media/demo.mp4">Download the demo.</a>
+        </video>
+        <p class="player-note">Real audio. Illustrated prompt flow. SCCodex adds sound to your existing Codex.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="replay-title">
+      <h2 id="replay-title">Hear the handoff</h2>
+      <p class="sub">Three Zealot acknowledgements. Then Dragoon. Click to replay any one.</p>
+      <div class="replays" id="replays"></div>
+      <label class="volume" for="volume">Preview volume <input type="range" id="volume" min="0" max="100" value="65"><output id="volume-value" for="volume">65%</output></label>
+      <p class="status" id="status" role="status" aria-live="polite">Press play to hear the demo.</p>
+    </section>
+
+    <section class="install" aria-labelledby="install-title">
+      <div>
+        <h2 id="install-title">Make it part of your session</h2>
+        <p>macOS, Python 3.9+, ffmpeg, and your existing Codex CLI. Install once, trust the hook in <code>/hooks</code>, then use Codex as usual.</p>
+        <p><a href="https://github.com/amicus-investments/sccodex#readme">Full setup and controls ↗</a></p>
+      </div>
+      <pre><code>./sccodex fetch       <span class="comment"># Prepare the sound pack</span>
+./sccodex setup       <span class="comment"># Install the prompt hook</span>
+codex                <span class="comment"># Open /hooks and trust once</span></code></pre>
+    </section>
+
+    <section id="soundboard" aria-labelledby="board-title">
+      <h2 id="board-title">Pick your unit</h2>
+      <p class="sub">All 14 units, in rotation order. These previews leave your prompt rotation alone.<br><span id="audio-source">Checking the sound pack…</span></p>
+      <div class="board" id="board"></div>
+      <noscript><p>The video plays without JavaScript. To hear other units, run <code>./sccodex preview zealot</code> in your terminal, substituting a unit name.</p></noscript>
+    </section>
+  </main>
+  <footer>
+    <p>Code and original graphics: MIT. StarCraft audio and trademarks: Blizzard Entertainment.</p>
+    <p>Independent fan project, unaffiliated with Blizzard Entertainment or OpenAI. <a href="https://github.com/amicus-investments/sccodex/blob/main/NOTICE.md">Audio credits and policies ↗</a></p>
+  </footer>
+  <script>
+    const video = document.querySelector('#demo');
+    const status = document.querySelector('#status');
+    const volume = document.querySelector('#volume');
+    const players = [];
+    let replayEnd = null;
+    video.volume = .65;
+
+    function pauseOthers(current) {
+      for (const player of [video, ...players]) if (player !== current) player.pause();
+    }
+
+    volume.addEventListener('input', () => {
+      document.querySelector('#volume-value').value = volume.value + '%';
+      for (const player of [video, ...players]) player.volume = Number(volume.value) / 100;
+    });
+    video.addEventListener('play', () => pauseOthers(video));
+    video.addEventListener('timeupdate', () => {
+      if (replayEnd !== null && video.currentTime >= replayEnd) {
+        video.pause();
+        replayEnd = null;
+        document.querySelectorAll('.replay').forEach(button => button.setAttribute('aria-pressed', 'false'));
+      }
+    });
+
+    async function loadReplays() {
+      const response = await fetch('media/timeline.json');
+      if (!response.ok) throw new Error('Demo timing unavailable');
+      for (const event of await response.json()) {
+        const button = document.createElement('button');
+        button.className = 'replay';
+        button.type = 'button';
+        button.setAttribute('aria-pressed', 'false');
+        const icon = document.createElement('i');
+        icon.className = 'play-icon';
+        icon.textContent = '▶';
+        icon.setAttribute('aria-hidden', 'true');
+        const name = document.createElement('strong');
+        name.textContent = event.unit + ' ' + event.slot + '/3';
+        const quote = document.createElement('span');
+        quote.textContent = event.quote;
+        const caption = document.createElement('small');
+        caption.textContent = event.unit === 'Dragoon' ? 'PROMPT 4 · NEXT UNIT' : 'PROMPT ' + event.slot;
+        button.append(icon, name, quote, caption);
+        button.addEventListener('click', async () => {
+          pauseOthers(video);
+          video.pause();
+          document.querySelectorAll('.replay').forEach(other => other.setAttribute('aria-pressed', String(other === button)));
+          try {
+            // Wait for the small video to be ready before seeking to the clip.
+            if (video.readyState < HTMLMediaElement.HAVE_ENOUGH_DATA) {
+              await new Promise((resolve, reject) => {
+                video.addEventListener('canplaythrough', resolve, { once: true });
+                video.addEventListener('error', reject, { once: true });
+              });
+            }
+            video.currentTime = event.start;
+            replayEnd = event.end;
+            await video.play();
+            status.textContent = 'Playing ' + event.unit + ' acknowledgement ' + event.slot + ' of 3.';
+          } catch {
+            status.textContent = 'Press the video play button to hear this acknowledgement.';
+          }
+        });
+        document.querySelector('#replays').append(button);
+      }
+    }
+
+    async function loadBoard() {
+      const response = await fetch('protoss.json');
+      if (!response.ok) throw new Error('Unit manifest unavailable');
+      const manifest = await response.json();
+      const probe = await fetch('../assets/' + manifest.units[0].clips[0].file, { method: 'HEAD' }).catch(() => null);
+      const local = probe && probe.ok && probe.headers.get('content-type')?.includes('audio');
+      const source = clip => local ? '../assets/' + clip.file : new URL(clip.source, manifest.source.raw_base).href;
+      document.querySelector('#audio-source').textContent = local
+        ? 'Playing your downloaded WAVs. No network needed for the clips.'
+        : 'Streams clips from the pinned upstream mirror when you press play. Audio: Blizzard Entertainment.';
+      manifest.units.forEach((unit, index) => {
+        const card = document.createElement('article');
+        card.className = 'unit';
+        const title = document.createElement('h3');
+        title.textContent = unit.name;
+        const meta = document.createElement('span');
+        meta.className = 'unit-meta';
+        meta.textContent = 'Prompts ' + (index * 3 + 1) + '–' + (index * 3 + 3);
+        const slots = document.createElement('div');
+        slots.className = 'slots';
+        const audio = document.createElement('audio');
+        audio.controls = true;
+        audio.preload = 'none';
+        audio.volume = Number(volume.value) / 100;
+        audio.setAttribute('aria-label', unit.name + ' acknowledgement player');
+        audio.src = source(unit.clips[0]);
+        audio.addEventListener('play', () => { replayEnd = null; pauseOthers(audio); });
+        audio.addEventListener('error', () => { status.textContent = 'This clip could not play. For local WAV playback, run ./sccodex fetch and reload the preview.'; });
+        players.push(audio);
+        unit.clips.forEach((clip, slot) => {
+          const button = document.createElement('button');
+          button.className = 'slot';
+          button.type = 'button';
+          button.textContent = '▶ ' + (slot + 1) + '/3';
+          button.setAttribute('aria-label', 'Play ' + unit.name + ' acknowledgement ' + (slot + 1) + ' of 3');
+          button.setAttribute('aria-pressed', String(slot === 0));
+          button.addEventListener('click', async () => {
+            replayEnd = null;
+            pauseOthers(audio);
+            slots.querySelectorAll('button').forEach(other => other.setAttribute('aria-pressed', String(other === button)));
+            audio.src = source(clip);
+            try {
+              await audio.play();
+              status.textContent = 'Playing ' + unit.name + ' acknowledgement ' + (slot + 1) + ' of 3.';
+            } catch {
+              status.textContent = 'Unable to play the clip. Run ./sccodex fetch, then check the preview volume.';
+            }
+          });
+          slots.append(button);
+        });
+        card.append(title, meta, slots, audio);
+        if (unit.note) {
+          const note = document.createElement('p');
+          note.className = 'unit-note';
+          note.textContent = unit.note;
+          card.append(note);
+        }
+        document.querySelector('#board').append(card);
+      });
+    }
+
+    Promise.allSettled([loadReplays(), loadBoard()]).then(results => {
+      if (results.some(result => result.status === 'rejected')) {
+        status.textContent = 'For the soundboard, run python3 scripts/preview.py from the repository and open localhost:8765/docs/.';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+[
+  {
+    "unit": "Zealot",
+    "slot": 1,
+    "start": 1.0,
+    "end": 2.508,
+    "quote": "Thus I serve!"
+  },
+  {
+    "unit": "Zealot",
+    "slot": 2,
+    "start": 5.0,
+    "end": 6.366,
+    "quote": "Honor guide me!"
+  },
+  {
+    "unit": "Zealot",
+    "slot": 3,
+    "start": 9.0,
+    "end": 10.218,
+    "quote": "For Adun!"
+  },
+  {
+    "unit": "Dragoon",
+    "slot": 1,
+    "start": 13.0,
+    "end": 13.975,
+    "quote": "Confirmed."
+  }
+]

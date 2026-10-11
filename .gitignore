@@ -4,3 +4,4 @@ __pycache__/
 assets/audio/
 .venv/
 *.egg-info/
+.build/
