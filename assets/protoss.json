@@ -1,0 +1,308 @@
+{
+  "version": 1,
+  "race": "protoss",
+  "plays_per_unit": 3,
+  "source": {
+    "repository": "https://github.com/hometlt/starcraft-all-races-assets",
+    "commit": "362949791055e0fc010ab7fe873792b362cba2d9",
+    "raw_base": "https://raw.githubusercontent.com/hometlt/starcraft-all-races-assets/362949791055e0fc010ab7fe873792b362cba2d9/",
+    "credit": "StarCraft audio is by Blizzard Entertainment; source mirror by hometlt."
+  },
+  "units": [
+    {
+      "id": "zealot",
+      "name": "Zealot",
+      "clips": [
+        {
+          "file": "audio/protoss/zealot/pzeyes01.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Zealot/pzeyes01.ogg",
+          "git_blob_sha": "49599463ade254fbd98d463815107cd27e0f9921"
+        },
+        {
+          "file": "audio/protoss/zealot/pzeyes02.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Zealot/pzeyes02.ogg",
+          "git_blob_sha": "e4a482e970a6f9a5a606e15ab83cf3a65ea1c5b8"
+        },
+        {
+          "file": "audio/protoss/zealot/pzeyes03.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Zealot/pzeyes03.ogg",
+          "git_blob_sha": "32c9b74fce5b9585cc8bdf22862a7c4f5d028cc2"
+        }
+      ]
+    },
+    {
+      "id": "dragoon",
+      "name": "Dragoon",
+      "clips": [
+        {
+          "file": "audio/protoss/dragoon/pdryes00.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Dragoon/PDrYes00.ogg",
+          "git_blob_sha": "ff41b3fd3d325f360fac21a1d6d46fc2b6836644"
+        },
+        {
+          "file": "audio/protoss/dragoon/pdryes01.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Dragoon/PDrYes01.ogg",
+          "git_blob_sha": "6863f815f47f27b90032d344ebc0a172bd180f81"
+        },
+        {
+          "file": "audio/protoss/dragoon/pdryes04.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Dragoon/PDrYes04.ogg",
+          "git_blob_sha": "7a0482aebd3e664d6085b53a117386c6a02e6043"
+        }
+      ]
+    },
+    {
+      "id": "high-templar",
+      "name": "High Templar",
+      "clips": [
+        {
+          "file": "audio/protoss/high-templar/pteyes00.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/HighTemplar/pteyes00.ogg",
+          "git_blob_sha": "743b16365ce0cf79c9cafe320e4c03d2507d91f9"
+        },
+        {
+          "file": "audio/protoss/high-templar/pteyes01.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/HighTemplar/pteyes01.ogg",
+          "git_blob_sha": "d9ea6b979d0ea8080702212bf423c73c323fe840"
+        },
+        {
+          "file": "audio/protoss/high-templar/pteyes02.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/HighTemplar/pteyes02.ogg",
+          "git_blob_sha": "1cf6d41e20071f4a755ae97571d74e36ea65329c"
+        }
+      ]
+    },
+    {
+      "id": "dark-templar",
+      "name": "Dark Templar",
+      "clips": [
+        {
+          "file": "audio/protoss/dark-templar/pdtyes00.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/DarkTemplar/pdtyes00.ogg",
+          "git_blob_sha": "903e62710cf8f9a066e1a6db26e192f8bcf7a033"
+        },
+        {
+          "file": "audio/protoss/dark-templar/pdtyes01.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/DarkTemplar/pdtyes01.ogg",
+          "git_blob_sha": "9f17521f763b09025d88e4ae4e9250ec648d4b17"
+        },
+        {
+          "file": "audio/protoss/dark-templar/pdtyes02.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/DarkTemplar/pdtyes02.ogg",
+          "git_blob_sha": "ad0831b5677524478bc54575e11920c44acaa70c"
+        }
+      ]
+    },
+    {
+      "id": "archon",
+      "name": "Archon",
+      "clips": [
+        {
+          "file": "audio/protoss/archon/paryes00.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Archon/paryes00.ogg",
+          "git_blob_sha": "a5a61bbc18813c3c7ee15f5278b4647b2396d7ed"
+        },
+        {
+          "file": "audio/protoss/archon/paryes01.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Archon/paryes01.ogg",
+          "git_blob_sha": "f82d3280c0e1a57b2d8ab303a7125d2fec6b91db"
+        },
+        {
+          "file": "audio/protoss/archon/paryes02.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Archon/paryes02.ogg",
+          "git_blob_sha": "2f5413c8bf09c7a3d3c257189eb486a004c71929"
+        }
+      ]
+    },
+    {
+      "id": "dark-archon",
+      "name": "Dark Archon",
+      "clips": [
+        {
+          "file": "audio/protoss/dark-archon/pdayes00.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Dark Archon/pdayes00.ogg",
+          "git_blob_sha": "720cf9866ed6144751a3b6a47bda145b96e801a5"
+        },
+        {
+          "file": "audio/protoss/dark-archon/pdayes01.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Dark Archon/pdayes01.ogg",
+          "git_blob_sha": "02bfe48dfd19c17a72fcb1a825e141a879f12c8c"
+        },
+        {
+          "file": "audio/protoss/dark-archon/pdayes02.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Dark Archon/pdayes02.ogg",
+          "git_blob_sha": "426c34ac116482f3972605ffed5ec56588266308"
+        }
+      ]
+    },
+    {
+      "id": "probe",
+      "name": "Probe",
+      "clips": [
+        {
+          "file": "audio/protoss/probe/ppryes00.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Probe/pprYes00.ogg",
+          "git_blob_sha": "b7adef24e3e5840b6b8a31076c2dd5e802fb33da"
+        },
+        {
+          "file": "audio/protoss/probe/ppryes01.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Probe/pprYes01.ogg",
+          "git_blob_sha": "801fdba0c668f5506f9adf0bff681635b8558052"
+        },
+        {
+          "file": "audio/protoss/probe/ppryes02.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Probe/pprYes02.ogg",
+          "git_blob_sha": "6e41def24ec9c7b42f265c172216bb010bd2fae2"
+        }
+      ]
+    },
+    {
+      "id": "shuttle",
+      "name": "Shuttle",
+      "clips": [
+        {
+          "file": "audio/protoss/shuttle/pshyes00.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Shuttle/pshyes00.ogg",
+          "git_blob_sha": "83eeea80e19c66653c8c016c221ea135b6c72185"
+        },
+        {
+          "file": "audio/protoss/shuttle/pshyes01.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Shuttle/pshyes01.ogg",
+          "git_blob_sha": "7d31620b6af16ef05d2fcbec23f0bc4fdd066465"
+        },
+        {
+          "file": "audio/protoss/shuttle/pshyes02.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Shuttle/pshyes02.ogg",
+          "git_blob_sha": "955390eee017ec42defc56faf360c6fc4fa97990"
+        }
+      ]
+    },
+    {
+      "id": "reaver",
+      "name": "Reaver",
+      "clips": [
+        {
+          "file": "audio/protoss/reaver/ptryes00.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Reaver/PTrYes00.ogg",
+          "git_blob_sha": "9b42a588a5853fc08517fe6b2133c8b49f87ce22"
+        },
+        {
+          "file": "audio/protoss/reaver/ptryes01.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Reaver/PTrYes01.ogg",
+          "git_blob_sha": "89171443f5c0aad8814a28c0007abba7adfa709e"
+        },
+        {
+          "file": "audio/protoss/reaver/ptryes02.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Reaver/PTrYes02.ogg",
+          "git_blob_sha": "98e6e8d0e0bfda4415d6b33fdb2ce98af871d243"
+        }
+      ]
+    },
+    {
+      "id": "observer",
+      "name": "Observer",
+      "clips": [
+        {
+          "file": "audio/protoss/observer/pwiyes00.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Observer/pwiyes00.ogg",
+          "git_blob_sha": "eaba16bd9a1175b65b7aa18d4dd2de7709d1233c"
+        },
+        {
+          "file": "audio/protoss/observer/pwiyes01.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Observer/pwiyes01.ogg",
+          "git_blob_sha": "21cb7c57d8e150bf676e33e635d05c6f3abd92e8"
+        },
+        {
+          "file": "audio/protoss/observer/pwiyes00.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Observer/pwiyes00.ogg",
+          "git_blob_sha": "eaba16bd9a1175b65b7aa18d4dd2de7709d1233c"
+        }
+      ],
+      "note": "This sound set has two order acknowledgements. Slot three repeats the first."
+    },
+    {
+      "id": "scout",
+      "name": "Scout",
+      "clips": [
+        {
+          "file": "audio/protoss/scout/pscyes00.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Scout/pscyes00.ogg",
+          "git_blob_sha": "86740addcb189aaa764de71c45ec67be33b76781"
+        },
+        {
+          "file": "audio/protoss/scout/pscyes01.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Scout/pscyes01.ogg",
+          "git_blob_sha": "2f3faad8e7f2cacf5cd57200fe3600bfb61ddb28"
+        },
+        {
+          "file": "audio/protoss/scout/pscyes02.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Scout/pscyes02.ogg",
+          "git_blob_sha": "ad5db0823695334481499dafc720f4898b5acf83"
+        }
+      ]
+    },
+    {
+      "id": "corsair",
+      "name": "Corsair",
+      "clips": [
+        {
+          "file": "audio/protoss/corsair/pcoyes00.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Corsair/pcoyes00.wav",
+          "git_blob_sha": "d49bcb527faf4c03c7918e138347dc1115f4ed2d"
+        },
+        {
+          "file": "audio/protoss/corsair/pcoyes01.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Corsair/pcoyes01.wav",
+          "git_blob_sha": "fbb2fcf707a60c611d5fb5e57e4b3c110499ec41"
+        },
+        {
+          "file": "audio/protoss/corsair/pcoyes02.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Corsair/pcoyes02.wav",
+          "git_blob_sha": "6b5f7de06e521cfa5550d3ad478d56a5bcac6bac"
+        }
+      ]
+    },
+    {
+      "id": "carrier",
+      "name": "Carrier",
+      "clips": [
+        {
+          "file": "audio/protoss/carrier/pcayes00.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Carrier/pcayes00.ogg",
+          "git_blob_sha": "bac7a0a4c7239d3e3fa0476556e5b2321bd03175"
+        },
+        {
+          "file": "audio/protoss/carrier/pcayes01.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Carrier/pcayes01.ogg",
+          "git_blob_sha": "cd45bd368d01a6d5f74d87c02282b13bf7a20d5a"
+        },
+        {
+          "file": "audio/protoss/carrier/pcayes02.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Carrier/pcayes02.ogg",
+          "git_blob_sha": "50728354defb896e710a59ab69dadcafd33d67af"
+        }
+      ]
+    },
+    {
+      "id": "arbiter",
+      "name": "Arbiter",
+      "clips": [
+        {
+          "file": "audio/protoss/arbiter/pabyes00.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Arbiter/pabYes00.ogg",
+          "git_blob_sha": "56508dc2f8c934dd74371d9b4ab4f3893f36cb65"
+        },
+        {
+          "file": "audio/protoss/arbiter/pabyes01.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Arbiter/pabYes01.ogg",
+          "git_blob_sha": "c666cb46688bcbe9be73a5d74eab6c6fa91366c3"
+        },
+        {
+          "file": "audio/protoss/arbiter/pabyes02.wav",
+          "source": "BroodWar.SC2Mod/Assets/Sounds/Arbiter/pabYes02.ogg",
+          "git_blob_sha": "f2c7b8a53851b1260313184df7b90e2c72dc294e"
+        }
+      ]
+    }
+  ]
+}

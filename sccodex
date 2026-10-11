@@ -1,0 +1,4 @@
+#!/bin/sh
+# Resolve our location without changing the user's working directory.
+SCCODEX_SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+exec python3 "$SCCODEX_SCRIPT_DIR/src/sccodex.py" "$@"
